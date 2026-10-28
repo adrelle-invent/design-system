@@ -16,6 +16,13 @@ yarn add @adrelle/design-system
 pnpm add @adrelle/design-system
 ```
 
+### Agent Skill Installation
+To add the AI agent skill to your project (Cursor, Windsurf, Claude Code, Antigravity):
+
+```bash
+npx skills add adrelle-invent/design-system
+```
+
 ---
 
 ## 🛠️ Usage
@@ -39,6 +46,25 @@ If your project is built with Tailwind CSS v4, import Tailwind and then load our
 
 #### Theming & Dark Mode:
 Theme switching is driven entirely by CSS variables. Toggling the `.dark` class on `:root` (`<html>`) switches all semantic variables (`--background`, `--foreground`, `--card`, `--border`, `--primary`, etc.) automatically without needing inline conditional classes.
+
+#### Preventing Dark Mode Flicker (Flash of Unstyled Theme):
+To prevent a flash of light theme when reloading a dark-themed page, add this blocking inline script inside your document's `<head>` before any stylesheets or markup render:
+
+```html
+<script>
+  (function () {
+    try {
+      const storedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (storedTheme === "dark" || (!storedTheme && prefersDark)) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    } catch (_) {}
+  })();
+</script>
+```
 
 #### Disabling Dark Mode (Light Mode Only):
 If you want to disable dark mode entirely and force your website to stay in light mode (even if the user's OS prefers dark mode), simply add the `light` class to your root `<html>` element:
@@ -107,22 +133,3 @@ The package includes pre-styled, accessibility-compliant CSS components with zer
 - **`.alert`**: Semantic feedback containers with 1px tinted borders (`.alert-success`, `.alert-warning`, `.alert-danger`, `.alert-info`).
 - **`.dialog` & `.drawer`**: 5-region modal dialogs (`shadow-lg`, backdrop blur) and slide-over preview drawers (`shadow-xl`).
 - **`.sidebar` & `.navbar`**: Collapsible sidebars with subtle blue tint active highlighting (`.sidebar-item.active`) and `.telemetry-pulse` operational indicators.
-
----
-
-## 🔧 Local Development & Sandbox (Vue Playground)
-
-If you are contributing to this design system project:
-
-1. Clone the repository and install local dev dependencies:
-   ```bash
-   npm install
-   ```
-2. Start the Vue sandbox to preview components:
-   ```bash
-   npm run dev
-   ```
-3. Compile the production bundles:
-   ```bash
-   npm run build
-   ```
