@@ -37,15 +37,8 @@ If your project is built with Tailwind CSS v4, import Tailwind and then load our
 @import "@ad-technology-inc/design-system/app.css";
 ```
 
-#### Configuring Dark Mode:
-By default, Tailwind CSS v4 handles dark mode using media queries. If your project uses class-based dark mode (e.g. toggling `.dark` class on the `<html>` element), define the custom variant in your stylesheet:
-
-```css
-@import "tailwindcss";
-@custom-variant dark (:root.dark &, html.dark &); /* Only add if using class-based dark mode */
-
-@import "@ad-technology-inc/design-system/app.css";
-```
+#### Theming & Dark Mode:
+Theme switching is driven entirely by CSS variables. Toggling the `.dark` class on `:root` (`<html>`) switches all semantic variables (`--background`, `--foreground`, `--card`, `--border`, `--primary`, etc.) automatically without needing inline conditional classes.
 
 #### Disabling Dark Mode (Light Mode Only):
 If you want to disable dark mode entirely and force your website to stay in light mode (even if the user's OS prefers dark mode), simply add the `light` class to your root `<html>` element:

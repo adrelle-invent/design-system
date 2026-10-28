@@ -425,7 +425,7 @@ onMounted(() => {
             >
               <span class="font-mono">PROD-SYNC: ACTIVE</span>
               <span
-                class="inline-block w-1 h-1 rounded-full bg-slate-400 dark:bg-slate-600"
+                class="inline-block w-1 h-1 rounded-full bg-neutral-foreground/40"
               />
               <span>Modern SaaS Dashboard Aesthetic</span>
             </p>
@@ -1290,7 +1290,7 @@ onMounted(() => {
             <div class="flex justify-between">
               <span class="text-neutral-foreground">Tenancy Verification:</span>
               <span
-                class="font-mono text-emerald-600 dark:text-emerald-400 font-bold"
+                class="font-mono text-success font-bold"
                 >VERIFIED_OK</span
               >
             </div>

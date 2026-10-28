@@ -85,15 +85,15 @@ function increment(): void {
 </script>
 
 <template>
- <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-xs max-w-sm">
+ <div class="bg-card border border-border rounded-xl p-5 shadow-xs max-w-sm">
     <div class="flex items-center justify-between">
-      <h3 class="text-xs font-semibold text-slate-700 dark:text-slate-300">{{ title }}</h3>
-      <span class="text-[10px] font-mono text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded-md border border-slate-200 dark:border-slate-700">
+      <h3 class="text-xs font-semibold text-foreground">{{ title }}</h3>
+      <span class="text-[10px] font-mono text-neutral-foreground bg-neutral px-1.5 py-0.5 rounded-md border border-border">
         {{ authStore.user?.name ?? 'Guest' }}
       </span>
     </div>
     <div class="mt-4 flex items-center justify-between">
-      <span class="text-sm font-mono text-slate-900 dark:text-white">
+      <span class="text-sm font-mono text-foreground">
         Count: {{ count }} <span class="text-xs text-slate-500">(2x: {{ doubleCount }})</span>
       </span>
       <button

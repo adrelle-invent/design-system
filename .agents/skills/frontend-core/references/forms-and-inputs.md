@@ -1,7 +1,7 @@
 ## Core Philosophy & Constraints
 - **Precision Input Geometry**: Standard single-line inputs must strictly use `h-9` (compact) or `h-10` (standard) with `rounded-lg`. Never use arbitrary `rounded-[4px]` or `rounded-[3px]`.
 - **Brand Focus States**: Use `focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none`. Never rely on default browser focus rings or suppress focus indicators without replacement.
-- **Surface Contrast**: Default to `border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500`.
+- **Surface Contrast**: Default to `border border-border bg-card text-foreground placeholder:text-neutral-foreground/60`.
 - **Accessibility & Association**: Every form field must be associated with a descriptive `<label htmlFor="...">`, have clear `aria-invalid` and `aria-describedby` attributes on validation failures, and provide non-distracting visual error banners.
 
 ## Production Boilerplate / Standard Pattern
@@ -27,7 +27,7 @@ export const FormInput: FC<FormInputProps> = ({
 
   return (
     <div className="space-y-1.5">
-      <label htmlFor={inputId} className="text-xs font-semibold text-slate-700 dark:text-slate-300">
+      <label htmlFor={inputId} className="text-xs font-semibold text-foreground">
         {label} {required && <span className="text-rose-500">*</span>}
       </label>
       <input
@@ -37,19 +37,19 @@ export const FormInput: FC<FormInputProps> = ({
         aria-describedby={error ? `${inputId}-error` : undefined}
         className={`
           h-9 w-full rounded-lg border px-3 text-xs
-          bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500
+          bg-card text-foreground placeholder:text-neutral-foreground/60
           transition-all focus:outline-none
           ${
             error
               ? 'border-rose-500 focus:border-rose-500 focus:ring-1 focus:ring-rose-500'
-              : 'border-slate-200 dark:border-slate-700 focus:border-primary focus:ring-1 focus:ring-primary'
+              : 'border-border focus:border-primary focus:ring-1 focus:ring-primary'
           }
           ${className}
         `.trim()}
         {...props}
       />
       {error && (
-        <p id={`${inputId}-error`} className="text-[11px] font-medium text-rose-600 dark:text-rose-400">
+        <p id={`${inputId}-error`} className="text-[11px] font-medium text-danger">
           {error}
         </p>
       )}
@@ -70,7 +70,7 @@ export const SearchInput: FC<{
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="h-9 w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 pl-9 pr-3 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none shadow-xs"
+      className="h-9 w-full rounded-lg border border-border bg-card pl-9 pr-3 text-xs text-foreground placeholder:text-neutral-foreground/60 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none shadow-xs"
     />
   </div>
 );
@@ -80,7 +80,7 @@ export const FormErrorBanner: FC<{ errors: string[] }> = ({ errors }) => {
   if (!errors.length) return null;
 
   return (
-    <div className="p-3.5 rounded-lg bg-rose-50 dark:bg-rose-950/40 border-l-4 border-rose-500 dark:border-rose-600 text-rose-800 dark:text-rose-300 text-xs space-y-1 shadow-xs">
+    <div className="p-3.5 rounded-lg bg-danger-tint border-l-4 border-danger text-danger text-xs space-y-1 shadow-xs">
       <div className="font-semibold flex items-center gap-1.5">
         <AlertCircle className="w-4 h-4 text-rose-500 shrink-0" />
         <span>Validation Errors</span>

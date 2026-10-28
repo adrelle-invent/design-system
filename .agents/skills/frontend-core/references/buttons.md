@@ -25,13 +25,13 @@ const variantStyles: Record<ButtonVariant, string> = {
   primary:
     'bg-primary hover:bg-primary-hover active:bg-primary-active text-primary-foreground shadow-xs border border-transparent',
   secondary:
-    'border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 shadow-xs',
+    'border border-border bg-card text-secondary-foreground hover:bg-secondary-hover shadow-xs',
   destructive:
     'bg-red-600 hover:bg-red-700 active:bg-red-800 text-white shadow-xs border border-transparent',
   ghost:
-    'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 border border-transparent',
+    'text-neutral-foreground hover:text-foreground hover:bg-neutral-hover border border-transparent',
   icon:
-    'p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 border border-transparent',
+    'p-1.5 text-slate-400 hover:text-slate-600 hover:text-foreground hover:bg-neutral-hover border border-transparent',
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -90,7 +90,7 @@ export const SegmentedSwitcher: FC<{
   activeTab: string;
   onChange: (value: string) => void;
 }> = ({ tabs, activeTab, onChange }) => (
-  <div className="inline-flex items-center p-1 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-900 text-xs">
+  <div className="inline-flex items-center p-1 rounded-lg border border-border bg-neutral text-xs">
     {tabs.map((tab) => (
       <button
         key={tab.value}
@@ -100,8 +100,8 @@ export const SegmentedSwitcher: FC<{
           px-3 py-1.5 rounded-md font-semibold transition-all cursor-pointer
           ${
             activeTab === tab.value
-              ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs'
-              : 'text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
+              ? 'bg-card text-foreground shadow-xs'
+              : 'text-slate-500 hover:text-slate-800 hover:text-foreground'
           }
         `}
       >
