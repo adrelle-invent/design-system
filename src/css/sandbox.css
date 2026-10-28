@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:is(.dark *));
-
 @import "./app.css";
 
 /* Sandbox-specific rules (if any) */
