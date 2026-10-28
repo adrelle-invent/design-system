@@ -1,0 +1,3 @@
+# Use package.json "files" array exclusively.
+# This empty .npmignore prevents npm from falling back to .gitignore (which ignores dist/)
+

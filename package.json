@@ -3,18 +3,32 @@
   "private": false,
   "version": "3.2.1",
   "type": "module",
-  "main": "src/css/index.css",
+  "main": "dist/css/index.css",
   "files": [
-    "src/css"
+    "dist/css",
+    "src/css",
+    "!src/css/sandbox.css"
   ],
   "exports": {
-    ".": "./src/css/index.css",
-    "./colors.css": "./src/css/theme/colors.css",
-    "./app.css": "./src/css/app.css"
+    ".": {
+      "default": "./dist/css/index.css"
+    },
+    "./min": "./dist/css/index.min.css",
+    "./app.css": {
+      "default": "./dist/css/app.css"
+    },
+    "./app.min.css": "./dist/css/app.min.css",
+    "./colors.css": {
+      "default": "./dist/css/colors.css"
+    },
+    "./colors.min.css": "./dist/css/colors.min.css",
+    "./src/*": "./src/css/*"
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build:css": "node scripts/build-css.js",
+    "build:sandbox": "vite build",
+    "build": "vite build && npm run build:css",
     "preview": "vite preview"
   },
   "dependencies": {

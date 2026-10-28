@@ -28,20 +28,26 @@ npx skills add adrelle-invent/design-system
 ## 🛠️ Usage
 
 ### 1. Vanilla CSS Integration
-Import the clean CSS bundle into your main stylesheet:
+Import the CSS bundle (or its minified variant) into your main stylesheet:
 
 ```css
 @import "@adrelle/design-system";
+
+/* Or import the minified bundle directly */
+@import "@adrelle/design-system/min";
 ```
 
 ### 2. Tailwind CSS v4 Integration
-If your project is built with Tailwind CSS v4, import Tailwind and then load our theme wrapper stylesheet:
+If your project is built with Tailwind CSS v4, import Tailwind and then load our theme wrapper stylesheet (or its minified variant):
 
 ```css
 @import "tailwindcss";
 
 /* Imports all components and links theme variables to Tailwind v4 */
 @import "@adrelle/design-system/app.css";
+
+/* Or import the minified Tailwind v4 bundle */
+@import "@adrelle/design-system/app.min.css";
 ```
 
 #### Theming & Dark Mode:
