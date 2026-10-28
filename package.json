@@ -1,7 +1,7 @@
 {
   "name": "@ad-technology-inc/design-system",
   "private": false,
-  "version": "3.0.0",
+  "version": "3.0.1",
   "type": "module",
   "main": "src/css/index.css",
   "files": [
