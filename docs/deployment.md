@@ -1,6 +1,6 @@
 # Deployment Guide
 
-To publish a new version of **`@ad-technology-inc/design-system`**, simply bump the version and push the git tag. GitHub Actions will handle the build and npm publishing automatically.
+To publish a new version of **`@adrelle/design-system`**, simply bump the version and push the git tag. GitHub Actions will handle the build and npm publishing automatically.
 
 ---
 
@@ -40,5 +40,5 @@ The [GitHub Action workflow](.github/workflows/publish.yml) will automatically:
 
 #### Verify Release (Optional)
 ```bash
-npm view @ad-technology-inc/design-system version
+npm view @adrelle/design-system version
 ```

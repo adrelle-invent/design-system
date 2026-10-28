@@ -1,4 +1,4 @@
-# @ad-technology-inc/design-system
+# @adrelle/design-system
 
 A premium, state-of-the-art CSS-first Design System built for modern SaaS applications. Compatible with vanilla HTML/CSS and fully integrated with Tailwind CSS v4.
 
@@ -9,11 +9,11 @@ A premium, state-of-the-art CSS-first Design System built for modern SaaS applic
 Install the package via your preferred package manager:
 
 ```bash
-npm install @ad-technology-inc/design-system
+npm install @adrelle/design-system
 # or
-yarn add @ad-technology-inc/design-system
+yarn add @adrelle/design-system
 # or
-pnpm add @ad-technology-inc/design-system
+pnpm add @adrelle/design-system
 ```
 
 ---
@@ -24,7 +24,7 @@ pnpm add @ad-technology-inc/design-system
 Import the clean CSS bundle into your main stylesheet:
 
 ```css
-@import "@ad-technology-inc/design-system";
+@import "@adrelle/design-system";
 ```
 
 ### 2. Tailwind CSS v4 Integration
@@ -34,7 +34,7 @@ If your project is built with Tailwind CSS v4, import Tailwind and then load our
 @import "tailwindcss";
 
 /* Imports all components and links theme variables to Tailwind v4 */
-@import "@ad-technology-inc/design-system/app.css";
+@import "@adrelle/design-system/app.css";
 ```
 
 #### Theming & Dark Mode:
