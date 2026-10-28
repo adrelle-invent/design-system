@@ -79,11 +79,13 @@ All components must deliver first-class dark mode parity with deep slate tones (
 - **Borders & Dividers**: `border-slate-200` (Light) / `border-slate-800` (Dark)
 - **Inset Wells / Sub-cards**: `bg-slate-50/70` (Light) / `bg-slate-800/40` (Dark)
 
-### Brand Accent
-- **Primary Blue**: `#1976D2`
-- **Hover Blue**: `#1565C0`
-- **Active / Pressed**: `#0D47A1`
-- **Subtle Tint**: `bg-blue-50 dark:bg-blue-950/60 text-[#1976D2] dark:text-blue-300 border-blue-200 dark:border-blue-800`
+### Brand Accent & Semantic System
+Anchored on the **Sky Scale** (`#0284C7`), mapped to design tokens / semantic utilities:
+- **Primary Brand**:
+  - Semantic Class / Variable: `bg-primary text-primary-foreground` or `var(--primary)`
+  - Light mode: `--sky-700` (`#0369a1`) | Hover: `--sky-800` (`#075985`) | Active: `--sky-900` (`#0c4a6e`)
+  - Dark mode: `--sky-300` (`#7dd3fc`) | Hover: `--sky-400` (`#38bdf8`) | Active: `--sky-200` (`#bae6fd`)
+- **Brand Sub-tint**: `bg-accent text-accent-foreground border-primary-border` (Light: `bg-sky-50 text-sky-700` / Dark: `bg-sky-950/60 text-sky-300 border-sky-800`)
 
 ### Semantic Feedback
 - **Success / Paid / Active**: Emerald (`text-emerald-700 dark:text-emerald-400`, `bg-emerald-50 dark:bg-emerald-950/60`, `border-emerald-200 dark:border-emerald-800`)
@@ -105,13 +107,13 @@ All components must deliver first-class dark mode parity with deep slate tones (
 
 | Component Area | Standard Pattern | Architectural Rule |
 | :--- | :--- | :--- |
-| **Action Buttons** | `rounded-lg shadow-xs cursor-pointer` | One primary (`#1976D2`) per view; secondary outline with `border-slate-200 dark:border-slate-700`. Zero emojis. |
+| **Action Buttons** | `rounded-lg shadow-xs cursor-pointer` | One primary (`bg-primary text-primary-foreground` / `button-primary`) per view; secondary outline with `border-slate-200 dark:border-slate-700`. Zero emojis. |
 | **Modals & Dialogs** | 5-region structure with `backdrop-blur-xs` | Set `rounded-xl shadow-lg border`, right-align footer actions, bind Escape key. |
 | **Data Tables** | Dense ledger wrapped in `rounded-xl` | Monospace right-aligned numeric data (`text-right font-mono`), row hover highlights, rectangular badges. |
 | **Containers & Cards** | 5-level container rhythm | Root cards `rounded-xl`, sub-tiles `rounded-lg`, wells `bg-slate-50/70 dark:bg-slate-900/60`. |
-| **Form Inputs** | Single-line `h-9` or `h-10 rounded-lg` | Explicit focus rings (`focus:ring-1 focus:ring-[#1976D2]`), clear `<label htmlFor="...">`, structured error banners. |
+| **Form Inputs** | Single-line `h-9` or `h-10 rounded-lg` | Explicit focus rings (`focus:ring-1 focus:ring-primary focus:border-primary`), clear `<label htmlFor="...">`, structured error banners. |
 | **Status Badges** | Rectangular `rounded-md border shadow-xs` | Always uppercase tracking (`text-[10px] font-bold uppercase tracking-wider`). Never pill-shaped. |
-| **Navigation** | Collapsible sidebar + topbar telemetry | Active item in subtle blue tint (`bg-blue-50 text-[#1976D2]`), real-time status pulse dots. |
+| **Navigation** | Collapsible sidebar + topbar telemetry | Active item in subtle blue tint (`bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300`), real-time status pulse dots. |
 
 ---
 
@@ -188,7 +190,7 @@ export const MetricCard: FC<MetricCardProps> = ({
           onClick={handleAction}
           disabled={isProcessing}
           aria-busy={isProcessing}
-          className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#1976D2] hover:bg-[#1565C0] active:bg-[#0D47A1] text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1976D2]"
+          className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover active:bg-primary-active text-primary-foreground text-xs font-semibold shadow-xs transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
           {isProcessing ? (
             <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -230,5 +232,5 @@ Before marking any UI implementation complete, verify:
 - [ ] **Numeric Scannability**: Are all financial numbers, counters, percentages, and timestamps formatted with `font-mono`?
 - [ ] **AI Artifact Removal**: Have all blur gradient orbs, heavy `shadow-2xl`, and decorative emojis (e.g. sparkles, rocket) been eliminated?
 - [ ] **Dark Mode Balance**: Is dark mode implemented using deep slate surfaces (`bg-slate-900` / `bg-slate-950`) rather than pitch black?
-- [ ] **Interactive Feedback**: Do all action buttons have `cursor-pointer`, `:hover`, `:active`, and focus rings (`focus-visible:ring-[#1976D2]`)?
+- [ ] **Interactive Feedback**: Do all action buttons have `cursor-pointer`, `:hover`, `:active`, and focus rings (`focus-visible:ring-primary`)?
 - [ ] **Accessibility (A11y)**: Do all interactive elements use semantic HTML (`<button>`, `<input>`, `<dialog>`) and pass WCAG 2.1 AA contrast?

@@ -49,7 +49,7 @@ export const DataTable: FC<DataTableProps> = ({
       <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
         <div>
           <h2 className="text-xs font-semibold text-slate-900 dark:text-white flex items-center gap-2">
-            <FileText className="w-4 h-4 text-[#1976D2]" />
+            <FileText className="w-4 h-4 text-[var(--primary)]" />
             <span>Invoice Ledger</span>
           </h2>
           <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">

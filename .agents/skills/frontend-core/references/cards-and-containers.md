@@ -4,7 +4,7 @@
  -**Level 1 (Root Card / Cluster)**: `bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xs`
  -**Level 2 (Cluster Well)**: `bg-slate-50/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-xs`
  -**Level 3 (Nested Tile / Sub-card)**: `bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 rounded-lg p-4 shadow-xs`
- -**Level 4 (Icon Box)**: `w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-950/50 text-[#1976D2] dark:text-blue-300 flex items-center justify-center`
+ -**Level 4 (Icon Box)**: `w-8 h-8 rounded-lg bg-sky-50 dark:bg-sky-950/50 text-[var(--primary)] dark:text-sky-300 flex items-center justify-center`
 - **Zero Heavy Shadows**: Replace muddy `shadow-2xl` with crisp 1px borders (`border-slate-200 dark:border-slate-800`) paired with subtle `shadow-xs`.
 - **Monospace Financial & Metric Values**: All KPI numbers, percentages, and timestamps must use `font-mono`.
 - **No Background Blur Orbs**: Never apply purple/violet or neon gradient spheres or `blur-3xl` backgrounds behind cards.
@@ -37,7 +37,7 @@ export const StatCard: FC<StatCardProps> = ({
  const iconBoxStyles =
     iconBoxVariant === 'emerald'
       ? 'bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400'
-      : 'bg-blue-50 dark:bg-blue-950/50 text-[#1976D2] dark:text-blue-300';
+      : 'bg-sky-50 dark:bg-sky-950/50 text-[var(--primary)] dark:text-sky-300';
 
  return (
     <div className="bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 rounded-lg p-4 flex flex-col justify-between shadow-xs">
@@ -113,7 +113,7 @@ export const KanbanCard: FC<KanbanCardProps> = ({
         <Clock className="w-3 h-3 text-slate-400" />
         {timeSpent}
       </span>
-      <div className="w-5 h-5 rounded-full bg-[#1976D2] text-white flex items-center justify-center text-[10px] font-bold">
+      <div className="w-5 h-5 rounded-full bg-[var(--primary)] text-white flex items-center justify-center text-[10px] font-bold">
         {assigneeInitials}
       </div>
     </div>

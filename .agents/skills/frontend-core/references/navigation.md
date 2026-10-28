@@ -3,7 +3,7 @@
 - **Collapsible Sidebar Architecture (Linear/Notion)**:
  - Width: `w-64` (expanded) or `w-20` (compact).
  - Background & Border: `bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800`.
- - Active Item: `bg-blue-50 dark:bg-blue-950/60 text-[#1976D2] dark:text-blue-300 font-semibold shadow-xs`.
+ - Active Item: `bg-sky-50 dark:bg-sky-950/60 text-[var(--primary)] dark:text-sky-300 font-semibold shadow-xs`.
  - Inactive Item: `text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800`.
 - **Topbar Command Headers**: Pair high-contrast page titles (`text-xl font-bold tracking-tight text-slate-900 dark:text-white`) with muted operational metadata and real-time status pulses (`w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse`).
 
@@ -34,7 +34,7 @@ export const SidebarNavLink: FC<{
         group flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-150
         ${
           isActive
-            ? 'bg-blue-50 dark:bg-blue-950/60 text-[#1976D2] dark:text-blue-300 font-semibold shadow-xs'
+            ? 'bg-sky-50 dark:bg-sky-950/60 text-[var(--primary)] dark:text-sky-300 font-semibold shadow-xs'
             : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
         }
       `.trim()}
@@ -42,7 +42,7 @@ export const SidebarNavLink: FC<{
       <Icon
         className={`w-4 h-4 shrink-0 transition-colors ${
           isActive
-            ? 'text-[#1976D2] dark:text-blue-400'
+            ? 'text-[var(--primary)] dark:text-sky-400'
             : 'text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300'
         }`}
       />
@@ -101,5 +101,5 @@ export const CommandBarHeader: FC<{
 - **Missing Active State Semantics**: Failing to visually distinguish current page link from hover states.
 
 ## Verification & Testing
-- **Active Route Highlighting**: Verify current page highlights with `bg-blue-50 dark:bg-blue-950/60` and `text-[#1976D2]`.
+- **Active Route Highlighting**: Verify current page highlights with `bg-sky-50 dark:bg-sky-950/60` and `text-[var(--primary)]`.
 - **Sidebar Collapse Smoothness**: Ensure transitions between expanded (`w-64`) and compact (`w-20`) maintain alignment.

@@ -37,8 +37,8 @@ const badgeVariantStyles: Record<BadgeVariant, { container: string; dot: string 
  },
  info: {
     container:
-      'bg-blue-50 dark:bg-blue-950/60 text-[#1976D2] dark:text-blue-300 border-blue-200 dark:border-blue-800',
-    dot: 'bg-blue-500',
+      'bg-sky-50 dark:bg-sky-950/60 text-[var(--primary)] dark:text-sky-300 border-sky-200 dark:border-sky-800',
+    dot: 'bg-sky-500',
  },
  neutral: {
     container:

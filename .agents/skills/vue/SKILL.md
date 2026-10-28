@@ -53,7 +53,7 @@ This document serves as the decision matrix and component pattern reference for 
 ---
 
 ## 2. Production Code Standard Pattern
-<!-- Aligned with frontend-core design tokens: #1976D2 primary, rounded-lg, shadow-xs, cursor-pointer, font-mono -->
+<!-- Aligned with frontend-core design tokens: primary brand, rounded-lg, shadow-xs, cursor-pointer, font-mono -->
 
 ```vue
 <script setup lang="ts">
@@ -99,7 +99,7 @@ function increment(): void {
       <button
         type="button"
         @click="increment"
-        class="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#1976D2] hover:bg-[#1565C0] active:bg-[#0D47A1] text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1976D2]"
+        class="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary hover:bg-primary-hover active:bg-primary-active text-primary-foreground text-xs font-semibold shadow-xs transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       >
         +1 Increment
       </button>

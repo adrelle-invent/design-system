@@ -37,7 +37,7 @@
   cursor: not-allowed;
 }
 
-/* Primary Action: #1976D2 */
+/* Primary Action: Sky Scale (#0284C7 Anchor) */
 .button-primary,
 .button-default {
   background-color: var(--primary);

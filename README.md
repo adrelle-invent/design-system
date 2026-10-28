@@ -42,7 +42,7 @@ By default, Tailwind CSS v4 handles dark mode using media queries. If your proje
 
 ```css
 @import "tailwindcss";
-@custom-variant dark (&:is(.dark *)); /* Only add if using class-based dark mode */
+@custom-variant dark (:root.dark &, html.dark &); /* Only add if using class-based dark mode */
 
 @import "@ad-technology-inc/design-system/app.css";
 ```
@@ -59,22 +59,25 @@ This disables the built-in prefers-color-scheme media query and keeps the light-
 
 ## 🎨 Theme Variables & Customization
 
-The design system is engineered for modern B2B SaaS interfaces. It exposes slate neutrals, brand blue (`#1976D2`), micro-elevations (`shadow-xs`), and strict mathematical corner radii:
+The design system is engineered for modern B2B SaaS interfaces. It exposes slate neutrals, sky/ocean brand blue (`#0284C7` anchor), micro-elevations (`shadow-xs`), and strict mathematical corner radii:
 
 ```css
 :root {
-  --primary: #1976d2;           /* Primary brand action */
-  --primary-hover: #1565c0;     /* Hover state */
-  --primary-active: #0d47a1;    /* Active state */
-  --radius-xl: 0.75rem;         /* Page containers, cards, modals */
-  --radius-lg: 0.5rem;          /* Action buttons, form inputs */
-  --radius-md: 0.375rem;        /* Badges, table chips, segmented tabs */
+  --primary: var(--sky-700);        /* #0369a1 - Primary brand action (Light) */
+  --primary-hover: var(--sky-800);  /* #075985 - Hover state */
+  --primary-active: var(--sky-900); /* #0c4a6e - Active state */
+  --primary-foreground: #fff;
+  --radius-xl: 0.75rem;             /* Page containers, cards, modals */
+  --radius-lg: 0.5rem;              /* Action buttons, form inputs */
+  --radius-md: 0.375rem;            /* Badges, table chips, segmented tabs */
 }
 
 .dark {
-  --background: #020617;        /* Deep slate-950 canvas (no pitch black) */
-  --card: #0f172a;              /* Slate-900 surface */
-  --border: #1e293b;            /* Crisp 1px border */
+  --background: #020617;            /* Deep slate-950 canvas (no pitch black) */
+  --card: #0f172a;                  /* Slate-900 surface */
+  --border: #1e293b;                /* Crisp 1px border */
+  --primary: var(--sky-300);        /* #7dd3fc - Accessible high-contrast primary (Dark) */
+  --primary-foreground: #020617;
 }
 ```
 ![Design Tokens](./src/assets/design-tokens.png)
@@ -82,13 +85,13 @@ The design system is engineered for modern B2B SaaS interfaces. It exposes slate
 ### Core Semantic Tokens Available:
 * `--background` / `--foreground`: Base canvas (`slate-50` / `slate-950`) & text
 * `--card` / `--card-nested`: Surfaces & cluster wells (`slate-50/70` / `slate-800/40`)
-* `--primary` / `--primary-hover` / `--primary-active` / `--primary-foreground`: Brand actions (`#1976D2`)
+* `--primary` / `--primary-hover` / `--primary-active` / `--primary-foreground`: Brand actions (Sky scale anchored on `#0284C7`)
 * `--primary-tint` / `--primary-border`: Subtle brand highlighting
 * `--secondary` / `--secondary-hover` / `--secondary-foreground`: Secondary actions
 * `--accent` / `--accent-hover` / `--accent-foreground`: Interactive highlights
 * `--neutral` / `--neutral-hover` / `--neutral-foreground`: Muted helpers and subtle backgrounds
 * `--border`: Structural container borders (`slate-200` / `slate-800`)
-* `--success` / `--warning` / `--info` / `--danger`: High-contrast semantic indicators (Emerald, Amber, Blue, Rose)
+* `--success` / `--warning` / `--info` / `--danger`: High-contrast semantic indicators (Emerald, Amber, Sky, Rose)
 * `--radius-xl` / `--radius-lg` / `--radius-md` / `--radius-full`: Geometry scale
 * `--shadow-xs` / `--shadow-lg` / `--shadow-xl`: Crisp micro-elevation hierarchy
 
@@ -103,7 +106,7 @@ The package includes pre-styled, accessibility-compliant CSS components with zer
 - **`.card`**: 5-level container rhythm (`.card`, `.card-well`, `.card-tile`, `.icon-box`, `.stat-value`, `.stat-change`).
 - **`.table-container` & `.table`**: Tabular ledgers with sticky headers, `.table-numeric` right-aligned monospace numbers, and `.table-footer` pagination.
 - **`.form-group`**: Form elements:
-  * `.form-input` / `.form-select` / `.form-textarea`: Form control fields with brand focus ring (`#1976D2`)
+  * `.form-input` / `.form-select` / `.form-textarea`: Form control fields with brand focus ring (`--primary`)
   * `.form-search`: Search input with inline icon positioning
   * `.form-error-banner`: Structured validation callout banner
   * `.form-file` / `.form-range` / `.form-checkbox` / `.form-radio`: Fully styled input components

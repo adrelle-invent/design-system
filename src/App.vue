@@ -64,6 +64,8 @@ const newUser = ref({
   role: "User",
   status: "Active",
   spent: 1200.0,
+  isActive: true,
+  tier: "standard"
 });
 
 const userToDelete = ref(null);
@@ -232,10 +234,14 @@ onMounted(() => {
     <aside class="sidebar app-shell-sidebar">
       <div class="sidebar-header">
         <div class="flex items-center gap-2">
-          <div class="w-6 h-6 rounded-md bg-[#1976D2] text-white flex items-center justify-center font-bold text-xs shadow-xs">
+          <div
+            class="w-6 h-6 rounded-md bg-primary text-primary-foreground flex items-center justify-center font-bold text-xs shadow-xs"
+          >
             AD
           </div>
-          <span class="font-bold text-xs tracking-tight text-foreground">Design System</span>
+          <span class="font-bold text-xs tracking-tight text-foreground"
+            >Design System</span
+          >
         </div>
         <span class="badge badge-mono text-[9px]">v1.6</span>
       </div>
@@ -280,12 +286,18 @@ onMounted(() => {
       <div
         class="relative flex w-full max-w-xs flex-1 flex-col bg-card border-r border-border h-full shadow-xl"
       >
-        <div class="flex h-14 items-center justify-between px-4 border-b border-border">
+        <div
+          class="flex h-14 items-center justify-between px-4 border-b border-border"
+        >
           <div class="flex items-center gap-2">
-            <div class="w-6 h-6 rounded-md bg-[#1976D2] text-white flex items-center justify-center font-bold text-xs shadow-xs">
+            <div
+              class="w-6 h-6 rounded-md bg-primary text-primary-foreground flex items-center justify-center font-bold text-xs shadow-xs"
+            >
               AD
             </div>
-            <span class="font-bold text-xs tracking-tight text-foreground">Design System</span>
+            <span class="font-bold text-xs tracking-tight text-foreground"
+              >Design System</span
+            >
           </div>
           <button
             @click="isMobileSidebarOpen = false"
@@ -398,7 +410,9 @@ onMounted(() => {
       <!-- CONTENT BODY -->
       <main class="app-shell-content">
         <!-- COMMAND BAR HEADER -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-border mb-6">
+        <div
+          class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-border mb-6"
+        >
           <div>
             <div class="flex items-center space-x-2">
               <span class="telemetry-pulse" />
@@ -406,9 +420,13 @@ onMounted(() => {
                 Design System Studio
               </h1>
             </div>
-            <p class="text-xs text-neutral-foreground mt-1 flex items-center gap-2 font-medium">
+            <p
+              class="text-xs text-neutral-foreground mt-1 flex items-center gap-2 font-medium"
+            >
               <span class="font-mono">PROD-SYNC: ACTIVE</span>
-              <span class="inline-block w-1 h-1 rounded-full bg-slate-400 dark:bg-slate-600" />
+              <span
+                class="inline-block w-1 h-1 rounded-full bg-slate-400 dark:bg-slate-600"
+              />
               <span>Modern SaaS Dashboard Aesthetic</span>
             </p>
           </div>
@@ -433,72 +451,102 @@ onMounted(() => {
 
         <!-- LEVEL 2 CLUSTER WELL & 5-LEVEL CONTAINER RHYTHM -->
         <div class="card-well mb-6">
-          <div class="flex items-center justify-between pb-3 border-b border-border mb-4">
+          <div
+            class="flex items-center justify-between pb-3 border-b border-border mb-4"
+          >
             <div class="flex items-center gap-2">
-              <span class="text-xs font-semibold text-foreground">Cluster Telemetry</span>
+              <span class="text-xs font-semibold text-foreground"
+                >Cluster Telemetry</span
+              >
               <span class="badge badge-success">
                 <span class="badge-dot badge-dot-success" />
                 <span>Healthy</span>
               </span>
             </div>
-            <span class="font-mono text-xs text-neutral-foreground">5-Level Container Rhythm</span>
+            <span class="font-mono text-xs text-neutral-foreground"
+              >5-Level Container Rhythm</span
+            >
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <!-- Level 3 Tile 1 -->
             <div class="card-tile">
               <div class="flex items-center justify-between">
-                <span class="text-[11px] font-semibold text-neutral-foreground uppercase tracking-wider">
+                <span
+                  class="text-[11px] font-semibold text-neutral-foreground uppercase tracking-wider"
+                >
                   Active Accounts
                 </span>
                 <span class="badge badge-mono">COUNT</span>
               </div>
               <div class="mt-3 flex items-baseline space-x-2">
                 <span class="stat-value">{{ users.length }}</span>
-                <span class="text-xs text-neutral-foreground font-mono">accounts</span>
+                <span class="text-xs text-neutral-foreground font-mono"
+                  >accounts</span
+                >
               </div>
-              <div class="mt-3 pt-2 border-t border-border flex items-center justify-between text-xs">
+              <div
+                class="mt-3 pt-2 border-t border-border flex items-center justify-between text-xs"
+              >
                 <span class="stat-change stat-change-positive">
                   +12.4% vs last cycle
                 </span>
-                <span class="text-neutral-foreground font-mono text-[10px]">REALTIME</span>
+                <span class="text-neutral-foreground font-mono text-[10px]"
+                  >REALTIME</span
+                >
               </div>
             </div>
 
             <!-- Level 3 Tile 2 -->
             <div class="card-tile">
               <div class="flex items-center justify-between">
-                <span class="text-[11px] font-semibold text-neutral-foreground uppercase tracking-wider">
+                <span
+                  class="text-[11px] font-semibold text-neutral-foreground uppercase tracking-wider"
+                >
                   Audited Receivables
                 </span>
                 <span class="badge badge-mono">USD</span>
               </div>
               <div class="mt-3 flex items-baseline space-x-2">
                 <span class="stat-value">
-                  ${{ users.reduce((acc, u) => acc + (u.spent || 0), 0).toLocaleString('en-US', { minimumFractionDigits: 2 }) }}
+                  ${{
+                    users
+                      .reduce((acc, u) => acc + (u.spent || 0), 0)
+                      .toLocaleString("en-US", { minimumFractionDigits: 2 })
+                  }}
                 </span>
               </div>
-              <div class="mt-3 pt-2 border-t border-border flex items-center justify-between text-xs">
+              <div
+                class="mt-3 pt-2 border-t border-border flex items-center justify-between text-xs"
+              >
                 <span class="stat-change stat-change-positive">
                   +8.1% vs benchmark
                 </span>
-                <span class="text-neutral-foreground font-mono text-[10px]">VERIFIED</span>
+                <span class="text-neutral-foreground font-mono text-[10px]"
+                  >VERIFIED</span
+                >
               </div>
             </div>
 
             <!-- Level 3 Tile 3 -->
             <div class="card-tile">
               <div class="flex items-center justify-between">
-                <span class="text-[11px] font-semibold text-neutral-foreground uppercase tracking-wider">
+                <span
+                  class="text-[11px] font-semibold text-neutral-foreground uppercase tracking-wider"
+                >
                   Security State
                 </span>
                 <span class="badge badge-mono">SOC2 AA</span>
               </div>
               <div class="mt-3 flex items-baseline space-x-2">
                 <span class="stat-value">100.0%</span>
-                <span class="text-xs text-neutral-foreground font-mono">compliant</span>
+                <span class="text-xs text-neutral-foreground font-mono"
+                  >compliant</span
+                >
               </div>
-              <div class="mt-3 pt-2 border-t border-border flex items-center justify-between text-xs">
+              <div
+                class="mt-3 pt-2 border-t border-border flex items-center justify-between text-xs"
+              >
                 <span class="text-neutral-foreground font-mono text-[11px]">
                   Audited 4m ago
                 </span>
@@ -519,7 +567,10 @@ onMounted(() => {
               </p>
             </div>
 
-            <form @submit.prevent="saveUser" class="card-content flex flex-col gap-4">
+            <form
+              @submit.prevent="saveUser"
+              class="card-content flex flex-col gap-4"
+            >
               <!-- Error Banner -->
               <div v-if="formErrors.length > 0" class="form-error-banner">
                 <div class="form-error-banner-title">
@@ -543,7 +594,9 @@ onMounted(() => {
                   placeholder="e.g. Alex Morgan"
                   required
                 />
-                <span class="form-helper">Canonical identity on commercial invoices.</span>
+                <span class="form-helper"
+                  >Canonical identity on commercial invoices.</span
+                >
               </div>
 
               <div class="form-group">
@@ -562,8 +615,14 @@ onMounted(() => {
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div class="form-group">
-                  <label class="form-label" for="member-role">Access Role</label>
-                  <select id="member-role" v-model="newUser.role" class="form-select">
+                  <label class="form-label" for="member-role"
+                    >Access Role</label
+                  >
+                  <select
+                    id="member-role"
+                    v-model="newUser.role"
+                    class="form-select"
+                  >
                     <option value="User">Standard User</option>
                     <option value="Manager">Department Manager</option>
                     <option value="Admin">Tenant Admin</option>
@@ -571,8 +630,14 @@ onMounted(() => {
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label" for="member-status">Initial Status</label>
-                  <select id="member-status" v-model="newUser.status" class="form-select">
+                  <label class="form-label" for="member-status"
+                    >Initial Status</label
+                  >
+                  <select
+                    id="member-status"
+                    v-model="newUser.status"
+                    class="form-select"
+                  >
                     <option value="Active">Active</option>
                     <option value="Pending">Pending Approval</option>
                     <option value="Blocked">Blocked</option>
@@ -581,7 +646,9 @@ onMounted(() => {
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="member-budget">Allocated Quota (USD)</label>
+                <label class="form-label" for="member-budget"
+                  >Allocated Quota (USD)</label
+                >
                 <input
                   id="member-budget"
                   v-model.number="newUser.spent"
@@ -592,8 +659,46 @@ onMounted(() => {
                 />
               </div>
 
+              <div class="form-group">
+                <label class="flex items-center gap-3 cursor-pointer">
+                  <input
+                    id="member-active"
+                    v-model="newUser.isActive"
+                    class="form-checkbox w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"
+                    type="checkbox"
+                  />
+                  <span class="form-label mb-0">Active Member</span>
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Subscription Tier</label>
+                <div class="flex items-center gap-6 mt-2">
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input
+                      v-model="newUser.tier"
+                      type="radio"
+                      value="standard"
+                      class="form-radio w-4 h-4 border-gray-300 text-primary focus:ring-primary"
+                    />
+                    <span class="text-sm font-medium">Standard</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input
+                      v-model="newUser.tier"
+                      type="radio"
+                      value="enterprise"
+                      class="form-radio w-4 h-4 border-gray-300 text-primary focus:ring-primary"
+                    />
+                    <span class="text-sm font-medium">Enterprise</span>
+                  </label>
+                </div>
+              </div>
+
               <div class="pt-2 flex items-center justify-between">
-                <span class="text-xs text-neutral-foreground font-mono">ROLE: {{ newUser.role.toUpperCase() }}</span>
+                <span class="text-xs text-neutral-foreground font-mono"
+                  >ROLE: {{ newUser.role.toUpperCase() }}</span
+                >
                 <button type="submit" class="button button-primary">
                   <span>Register Account</span>
                 </button>
@@ -606,7 +711,8 @@ onMounted(() => {
             <div class="card-header">
               <h2 class="card-title">Token Matrix & Slate Parity</h2>
               <p class="card-description">
-                Dark mode strictly built on slate-900 / slate-950 neutrals without pitch black.
+                Dark mode strictly built on slate-900 / slate-950 neutrals
+                without pitch black.
               </p>
             </div>
 
@@ -614,65 +720,154 @@ onMounted(() => {
               <!-- Mode Resolution Status -->
               <div class="card-well flex flex-col gap-2 text-xs">
                 <div class="flex justify-between items-center">
-                  <span class="text-neutral-foreground font-medium">Selected Theme:</span>
-                  <span class="font-mono font-bold capitalize text-foreground">{{ theme }}</span>
+                  <span class="text-neutral-foreground font-medium"
+                    >Selected Theme:</span
+                  >
+                  <span
+                    class="font-mono font-bold capitalize text-foreground"
+                    >{{ theme }}</span
+                  >
                 </div>
                 <div class="flex justify-between items-center">
-                  <span class="text-neutral-foreground font-medium">Resolved Canvas:</span>
+                  <span class="text-neutral-foreground font-medium"
+                    >Resolved Canvas:</span
+                  >
                   <span class="inline-flex items-center gap-1.5 font-bold">
-                    <span :class="['w-2 h-2 rounded-full', isResolvedDark ? 'bg-blue-400' : 'bg-[#1976D2]']" />
-                    <span>{{ isResolvedDark ? 'Slate 950 (#020617)' : 'Slate 50 (#F8FAFC)' }}</span>
+                    <span class="w-2 h-2 rounded-full bg-primary" />
+                    <span>{{
+                      isResolvedDark
+                        ? "Slate 950 (#020617)"
+                        : "Slate 50 (#F8FAFC)"
+                    }}</span>
                   </span>
                 </div>
                 <div class="flex justify-between items-center">
-                  <span class="text-neutral-foreground font-medium">Card Surface:</span>
-                  <span class="font-mono text-neutral-foreground">{{ isResolvedDark ? '#0F172A (slate-900)' : '#FFFFFF (white)' }}</span>
+                  <span class="text-neutral-foreground font-medium"
+                    >Card Surface:</span
+                  >
+                  <span class="font-mono text-neutral-foreground">{{
+                    isResolvedDark ? "#0F172A (slate-900)" : "#FFFFFF (white)"
+                  }}</span>
                 </div>
               </div>
 
               <!-- Color Palette Swatches -->
               <div>
-                <span class="form-label mb-2 block">Authoritative Design Tokens</span>
+                <span class="form-label mb-2 block"
+                  >Authoritative Design Tokens</span
+                >
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                  <div class="p-2 rounded-lg border border-border bg-card shadow-xs flex flex-col gap-1">
-                    <div class="h-6 rounded-md border border-border" style="background-color: var(--primary)" />
-                    <span class="text-[10px] font-mono font-bold truncate">--primary</span>
-                    <span class="text-[9px] font-mono text-neutral-foreground">#1976D2</span>
+                  <div
+                    class="p-2 rounded-lg border border-border bg-card shadow-xs flex flex-col gap-1"
+                  >
+                    <div
+                      class="h-6 rounded-md border border-border"
+                      style="background-color: var(--primary)"
+                    />
+                    <span class="text-[10px] font-mono font-bold truncate"
+                      >--primary</span
+                    >
+                    <span class="text-[9px] font-mono text-neutral-foreground"
+                      >#0284C7</span
+                    >
                   </div>
-                  <div class="p-2 rounded-lg border border-border bg-card shadow-xs flex flex-col gap-1">
-                    <div class="h-6 rounded-md border border-border" style="background-color: var(--card)" />
-                    <span class="text-[10px] font-mono font-bold truncate">--card</span>
-                    <span class="text-[9px] font-mono text-neutral-foreground">Surface</span>
+                  <div
+                    class="p-2 rounded-lg border border-border bg-card shadow-xs flex flex-col gap-1"
+                  >
+                    <div
+                      class="h-6 rounded-md border border-border"
+                      style="background-color: var(--card)"
+                    />
+                    <span class="text-[10px] font-mono font-bold truncate"
+                      >--card</span
+                    >
+                    <span class="text-[9px] font-mono text-neutral-foreground"
+                      >Surface</span
+                    >
                   </div>
-                  <div class="p-2 rounded-lg border border-border bg-card shadow-xs flex flex-col gap-1">
-                    <div class="h-6 rounded-md border border-border" style="background-color: var(--border)" />
-                    <span class="text-[10px] font-mono font-bold truncate">--border</span>
-                    <span class="text-[9px] font-mono text-neutral-foreground">1px Stroke</span>
+                  <div
+                    class="p-2 rounded-lg border border-border bg-card shadow-xs flex flex-col gap-1"
+                  >
+                    <div
+                      class="h-6 rounded-md border border-border"
+                      style="background-color: var(--border)"
+                    />
+                    <span class="text-[10px] font-mono font-bold truncate"
+                      >--border</span
+                    >
+                    <span class="text-[9px] font-mono text-neutral-foreground"
+                      >1px Stroke</span
+                    >
                   </div>
-                  <div class="p-2 rounded-lg border border-border bg-card shadow-xs flex flex-col gap-1">
-                    <div class="h-6 rounded-md border border-border" style="background-color: var(--success)" />
-                    <span class="text-[10px] font-mono font-bold truncate">--success</span>
-                    <span class="text-[9px] font-mono text-neutral-foreground">Emerald</span>
+                  <div
+                    class="p-2 rounded-lg border border-border bg-card shadow-xs flex flex-col gap-1"
+                  >
+                    <div
+                      class="h-6 rounded-md border border-border"
+                      style="background-color: var(--success)"
+                    />
+                    <span class="text-[10px] font-mono font-bold truncate"
+                      >--success</span
+                    >
+                    <span class="text-[9px] font-mono text-neutral-foreground"
+                      >Emerald</span
+                    >
                   </div>
-                  <div class="p-2 rounded-lg border border-border bg-card shadow-xs flex flex-col gap-1">
-                    <div class="h-6 rounded-md border border-border" style="background-color: var(--warning)" />
-                    <span class="text-[10px] font-mono font-bold truncate">--warning</span>
-                    <span class="text-[9px] font-mono text-neutral-foreground">Amber</span>
+                  <div
+                    class="p-2 rounded-lg border border-border bg-card shadow-xs flex flex-col gap-1"
+                  >
+                    <div
+                      class="h-6 rounded-md border border-border"
+                      style="background-color: var(--warning)"
+                    />
+                    <span class="text-[10px] font-mono font-bold truncate"
+                      >--warning</span
+                    >
+                    <span class="text-[9px] font-mono text-neutral-foreground"
+                      >Amber</span
+                    >
                   </div>
-                  <div class="p-2 rounded-lg border border-border bg-card shadow-xs flex flex-col gap-1">
-                    <div class="h-6 rounded-md border border-border" style="background-color: var(--danger)" />
-                    <span class="text-[10px] font-mono font-bold truncate">--danger</span>
-                    <span class="text-[9px] font-mono text-neutral-foreground">Rose</span>
+                  <div
+                    class="p-2 rounded-lg border border-border bg-card shadow-xs flex flex-col gap-1"
+                  >
+                    <div
+                      class="h-6 rounded-md border border-border"
+                      style="background-color: var(--danger)"
+                    />
+                    <span class="text-[10px] font-mono font-bold truncate"
+                      >--danger</span
+                    >
+                    <span class="text-[9px] font-mono text-neutral-foreground"
+                      >Rose</span
+                    >
                   </div>
-                  <div class="p-2 rounded-lg border border-border bg-card shadow-xs flex flex-col gap-1">
-                    <div class="h-6 rounded-md border border-border" style="background-color: var(--primary-tint)" />
-                    <span class="text-[10px] font-mono font-bold truncate">--primary-tint</span>
-                    <span class="text-[9px] font-mono text-neutral-foreground">Blue Tint</span>
+                  <div
+                    class="p-2 rounded-lg border border-border bg-card shadow-xs flex flex-col gap-1"
+                  >
+                    <div
+                      class="h-6 rounded-md border border-border"
+                      style="background-color: var(--primary-tint)"
+                    />
+                    <span class="text-[10px] font-mono font-bold truncate"
+                      >--primary-tint</span
+                    >
+                    <span class="text-[9px] font-mono text-neutral-foreground"
+                      >Blue Tint</span
+                    >
                   </div>
-                  <div class="p-2 rounded-lg border border-border bg-card shadow-xs flex flex-col gap-1">
-                    <div class="h-6 rounded-md border border-border" style="background-color: var(--card-nested)" />
-                    <span class="text-[10px] font-mono font-bold truncate">--card-nested</span>
-                    <span class="text-[9px] font-mono text-neutral-foreground">Well Tint</span>
+                  <div
+                    class="p-2 rounded-lg border border-border bg-card shadow-xs flex flex-col gap-1"
+                  >
+                    <div
+                      class="h-6 rounded-md border border-border"
+                      style="background-color: var(--card-nested)"
+                    />
+                    <span class="text-[10px] font-mono font-bold truncate"
+                      >--card-nested</span
+                    >
+                    <span class="text-[9px] font-mono text-neutral-foreground"
+                      >Well Tint</span
+                    >
                   </div>
                 </div>
               </div>
@@ -685,29 +880,41 @@ onMounted(() => {
           <div class="card-header">
             <h2 class="card-title">Atomic Component Registry</h2>
             <p class="card-description">
-              Unified design tokens across Action Controls, Rectangular Badges, and Semantic Alerts.
+              Unified design tokens across Action Controls, Rectangular Badges,
+              and Semantic Alerts.
             </p>
           </div>
 
           <div class="card-content flex flex-col gap-6">
             <!-- Buttons Scale -->
             <div>
-              <span class="form-label mb-2 block">Action Buttons (rounded-lg, shadow-xs, cursor-pointer)</span>
+              <span class="form-label mb-2 block"
+                >Action Buttons (rounded-lg, shadow-xs, cursor-pointer)</span
+              >
               <div class="flex flex-wrap items-center gap-3">
                 <button class="button button-primary">Primary Action</button>
-                <button class="button button-secondary">Secondary Outline</button>
+                <button class="button button-secondary">
+                  Secondary Outline
+                </button>
                 <button class="button button-accent">Subtle Tint</button>
                 <button class="button button-destructive">Destructive</button>
                 <button class="button button-ghost">Ghost</button>
                 <button class="button button-link">Inline Link</button>
-                <button class="button button-primary button-sm">Compact (sm)</button>
-                <button class="button button-primary button-lg">Standard (lg)</button>
+                <button class="button button-primary button-sm">
+                  Compact (sm)
+                </button>
+                <button class="button button-primary button-lg">
+                  Standard (lg)
+                </button>
               </div>
             </div>
 
             <!-- Rectangular Badges -->
             <div>
-              <span class="form-label mb-2 block">Rectangular Status Badges (rounded-md, uppercase, with pulse dot)</span>
+              <span class="form-label mb-2 block"
+                >Rectangular Status Badges (rounded-md, uppercase, with pulse
+                dot)</span
+              >
               <div class="flex flex-wrap items-center gap-3">
                 <span class="badge badge-success">
                   <span class="badge-dot badge-dot-success" />
@@ -725,41 +932,50 @@ onMounted(() => {
                   <span class="badge-dot badge-dot-info" />
                   <span>Telemetry</span>
                 </span>
-                <span class="badge badge-neutral badge-mono">
-                  #INV-2041
-                </span>
+                <span class="badge badge-neutral badge-mono"> #INV-2041 </span>
               </div>
             </div>
 
             <!-- Semantic Alerts -->
             <div>
-              <span class="form-label mb-2 block">Semantic Feedback Banners (1px Tinted Border)</span>
+              <span class="form-label mb-2 block"
+                >Semantic Feedback Banners (1px Tinted Border)</span
+              >
               <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <div class="alert alert-success">
                   <div class="alert-content">
                     <div class="alert-title">Operational Confirmation</div>
-                    <div class="alert-description">Changes committed successfully to the primary cluster ledger.</div>
+                    <div class="alert-description">
+                      Changes committed successfully to the primary cluster
+                      ledger.
+                    </div>
                   </div>
                 </div>
 
                 <div class="alert alert-info">
                   <div class="alert-content">
                     <div class="alert-title">System Advisory</div>
-                    <div class="alert-description">Scheduled maintenance planned for Sunday 02:00 UTC.</div>
+                    <div class="alert-description">
+                      Scheduled maintenance planned for Sunday 02:00 UTC.
+                    </div>
                   </div>
                 </div>
 
                 <div class="alert alert-warning">
                   <div class="alert-content">
                     <div class="alert-title">Quota Threshold Warning</div>
-                    <div class="alert-description">Tenant volume has reached 88% of provisioned throughput.</div>
+                    <div class="alert-description">
+                      Tenant volume has reached 88% of provisioned throughput.
+                    </div>
                   </div>
                 </div>
 
                 <div class="alert alert-danger">
                   <div class="alert-content">
                     <div class="alert-title">Authorization Safeguard</div>
-                    <div class="alert-description">Invalid signature supplied for API token revocation.</div>
+                    <div class="alert-description">
+                      Invalid signature supplied for API token revocation.
+                    </div>
                   </div>
                 </div>
               </div>
@@ -770,7 +986,9 @@ onMounted(() => {
         <!-- TABULAR LEDGER -->
         <div class="table-container mb-8">
           <!-- Table Control Bar -->
-          <div class="p-4 border-b border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div
+            class="p-4 border-b border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"
+          >
             <div>
               <h2 class="text-xs font-semibold text-foreground">
                 Audited Commercial Ledger
@@ -793,21 +1011,30 @@ onMounted(() => {
                 <button
                   type="button"
                   @click="tableFilter = 'all'"
-                  :class="['segmented-tab', tableFilter === 'all' ? 'active' : '']"
+                  :class="[
+                    'segmented-tab',
+                    tableFilter === 'all' ? 'active' : '',
+                  ]"
                 >
                   All
                 </button>
                 <button
                   type="button"
                   @click="tableFilter = 'active'"
-                  :class="['segmented-tab', tableFilter === 'active' ? 'active' : '']"
+                  :class="[
+                    'segmented-tab',
+                    tableFilter === 'active' ? 'active' : '',
+                  ]"
                 >
                   Active
                 </button>
                 <button
                   type="button"
                   @click="tableFilter = 'pending'"
-                  :class="['segmented-tab', tableFilter === 'pending' ? 'active' : '']"
+                  :class="[
+                    'segmented-tab',
+                    tableFilter === 'pending' ? 'active' : '',
+                  ]"
                 >
                   Pending
                 </button>
@@ -844,12 +1071,20 @@ onMounted(() => {
                 </td>
                 <td class="py-3 px-4">
                   <span :class="['badge', getBadgeVariant(user.status)]">
-                    <span :class="['badge-dot', getBadgeDotColor(user.status)]" />
+                    <span
+                      :class="['badge-dot', getBadgeDotColor(user.status)]"
+                    />
                     <span>{{ user.status }}</span>
                   </span>
                 </td>
-                <td class="py-3 px-4 text-right font-mono font-bold text-foreground">
-                  ${{ (user.spent || 0).toLocaleString('en-US', { minimumFractionDigits: 2 }) }}
+                <td
+                  class="py-3 px-4 text-right font-mono font-bold text-foreground"
+                >
+                  ${{
+                    (user.spent || 0).toLocaleString("en-US", {
+                      minimumFractionDigits: 2,
+                    })
+                  }}
                 </td>
                 <td class="py-3 px-4 text-right whitespace-nowrap">
                   <div class="inline-flex items-center gap-1.5 justify-end">
@@ -874,7 +1109,9 @@ onMounted(() => {
 
               <tr v-if="filteredUsers.length === 0">
                 <td colspan="7" class="table-empty">
-                  No matching account records found for query "{{ searchQuery }}".
+                  No matching account records found for query "{{
+                    searchQuery
+                  }}".
                 </td>
               </tr>
             </tbody>
@@ -883,7 +1120,8 @@ onMounted(() => {
           <!-- Table Footer Pagination -->
           <div class="table-footer">
             <span>
-              Showing {{ filteredUsers.length }} of {{ users.length }} member accounts
+              Showing {{ filteredUsers.length }} of {{ users.length }} member
+              accounts
             </span>
             <div class="flex items-center gap-1.5">
               <button
@@ -933,11 +1171,10 @@ onMounted(() => {
 
       <div class="dialog-body">
         <p class="text-neutral-foreground leading-relaxed">
-          This operation will immediately revoke access and delete the target member account. All active session tokens will be permanently revoked.
+          This operation will immediately revoke access and delete the target
+          member account. All active session tokens will be permanently revoked.
         </p>
-        <div class="card-well text-xs font-mono">
-          STATUS: SAFEGUARD_ENGAGED
-        </div>
+        <div class="card-well text-xs font-mono">STATUS: SAFEGUARD_ENGAGED</div>
       </div>
 
       <div class="dialog-footer">
@@ -970,9 +1207,11 @@ onMounted(() => {
     <div class="drawer">
       <div class="drawer-header">
         <div>
-          <h3 class="text-sm font-bold text-foreground">Member Account Telemetry</h3>
+          <h3 class="text-sm font-bold text-foreground">
+            Member Account Telemetry
+          </h3>
           <p class="text-[11px] text-neutral-foreground font-mono mt-0.5">
-            {{ selectedUser?.id || 'USR-PREVIEW' }}
+            {{ selectedUser?.id || "USR-PREVIEW" }}
           </p>
         </div>
         <button
@@ -988,9 +1227,21 @@ onMounted(() => {
       <div class="drawer-body">
         <div class="card-well space-y-3">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-semibold text-foreground">{{ selectedUser?.name }}</span>
-            <span :class="['badge', getBadgeVariant(selectedUser?.status || 'Active')]">
-              <span :class="['badge-dot', getBadgeDotColor(selectedUser?.status || 'Active')]" />
+            <span class="text-xs font-semibold text-foreground">{{
+              selectedUser?.name
+            }}</span>
+            <span
+              :class="[
+                'badge',
+                getBadgeVariant(selectedUser?.status || 'Active'),
+              ]"
+            >
+              <span
+                :class="[
+                  'badge-dot',
+                  getBadgeDotColor(selectedUser?.status || 'Active'),
+                ]"
+              />
               <span>{{ selectedUser?.status }}</span>
             </span>
           </div>
@@ -1003,13 +1254,21 @@ onMounted(() => {
           <span class="form-label">Ledger Information</span>
           <div class="grid grid-cols-2 gap-3">
             <div class="p-3 rounded-lg border border-border bg-card">
-              <span class="text-[11px] text-neutral-foreground block mb-1">Invoiced Quota</span>
+              <span class="text-[11px] text-neutral-foreground block mb-1"
+                >Invoiced Quota</span
+              >
               <span class="font-mono font-bold text-base text-foreground">
-                ${{ (selectedUser?.spent || 0).toLocaleString('en-US', { minimumFractionDigits: 2 }) }}
+                ${{
+                  (selectedUser?.spent || 0).toLocaleString("en-US", {
+                    minimumFractionDigits: 2,
+                  })
+                }}
               </span>
             </div>
             <div class="p-3 rounded-lg border border-border bg-card">
-              <span class="text-[11px] text-neutral-foreground block mb-1">Access Role</span>
+              <span class="text-[11px] text-neutral-foreground block mb-1"
+                >Access Role</span
+              >
               <span class="font-semibold text-sm text-foreground">
                 {{ selectedUser?.role }}
               </span>
@@ -1019,14 +1278,21 @@ onMounted(() => {
 
         <div class="space-y-2">
           <span class="form-label">Audit Timestamps</span>
-          <div class="p-3 rounded-lg border border-border bg-card flex flex-col gap-1.5 text-xs">
+          <div
+            class="p-3 rounded-lg border border-border bg-card flex flex-col gap-1.5 text-xs"
+          >
             <div class="flex justify-between">
               <span class="text-neutral-foreground">Created:</span>
-              <span class="font-mono text-foreground">{{ selectedUser?.created || '2026-09-25 12:00' }}</span>
+              <span class="font-mono text-foreground">{{
+                selectedUser?.created || "2026-09-25 12:00"
+              }}</span>
             </div>
             <div class="flex justify-between">
               <span class="text-neutral-foreground">Tenancy Verification:</span>
-              <span class="font-mono text-emerald-600 dark:text-emerald-400 font-bold">VERIFIED_OK</span>
+              <span
+                class="font-mono text-emerald-600 dark:text-emerald-400 font-bold"
+                >VERIFIED_OK</span
+              >
             </div>
           </div>
         </div>

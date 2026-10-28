@@ -4,7 +4,7 @@
  -**Level 1 (Root Card / Cluster)**: `bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xs`
  -**Level 2 (Cluster Well)**: `bg-slate-50/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-xs`
  -**Level 3 (Nested Tile / Sub-card)**: `bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 rounded-lg p-4 shadow-xs`
- -**Level 4 (Icon Box)**: `w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-950/50 text-[#1976D2] dark:text-blue-300 flex items-center justify-center`
+ -**Level 4 (Icon Box)**: `w-8 h-8 rounded-lg bg-sky-50 dark:bg-sky-950/50 text-[var(--primary)] dark:text-sky-300 flex items-center justify-center`
 - **Mobile-First Responsive Design**: Write base styles for mobile viewports (`320px+`), then scale up via `sm:`, `md:`, `lg:`, `xl:`.
 - **CSS Grid & Flexbox**: Use Flexbox for 1D alignments and CSS Grid for 2D multi-column dashboards.
 - **Fluid Layouts**: Prefer fluid percentage, `fr` units, and container queries over rigid fixed pixel dimensions.
@@ -17,7 +17,7 @@
  <!-- Sidebar -->
  <aside class="w-full md:w-64 bg-white dark:bg-slate-900 border-b md:border-b-0 md:border-r border-slate-200 dark:border-slate-800 p-4">
     <nav class="flex flex-row md:flex-col gap-1.5">
-      <a href="#" class="px-3 py-2 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-[#1976D2] dark:text-blue-300 font-semibold text-xs shadow-xs">
+      <a href="#" class="px-3 py-2 rounded-lg bg-sky-50 dark:bg-sky-950/60 text-[var(--primary)] dark:text-sky-300 font-semibold text-xs shadow-xs">
         Operations
       </a>
       <a href="#" class="px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-medium transition-colors">

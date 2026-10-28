@@ -234,8 +234,8 @@
 
 .form-checkbox:checked,
 .form-radio:checked {
-  background-color: var(--primary);
-  border-color: var(--primary);
+  background-color: var(--primary-active);
+  border-color: var(--primary-active);
 }
 
 .form-checkbox:checked::after {
