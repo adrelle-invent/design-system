@@ -1,13 +1,16 @@
-/* Theme tokens & variable defaults */
-@import "./theme/colors.css";
-@import "./theme/typography.css";
+/* 1. layer order */
+@layer theme, base, components, utilities;
 
-/* Layout elements */
+/* 2. Theme tokens & typography */
+@import "./theme/colors.css" layer(theme);
+@import "./theme/typography.css" layer(base);
+
+/* 3. Layouts */
 @import "./layouts/app-shell.css" layer(components);
 @import "./layouts/sidebar-layout.css" layer(components);
 @import "./layouts/split-layout.css" layer(components);
 
-/* Reusable components */
+/*  4. components */
 @import "./components/button.css" layer(components);
 @import "./components/card.css" layer(components);
 @import "./components/form.css" layer(components);
